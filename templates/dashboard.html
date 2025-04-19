@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+    <h2>Your Dashboard</h2>
+    <p>Welcome, {{ current_user.username }}!</p>
+
+    <h3>Parking Slot Status</h3>
+    <div class="slots-grid">
+        {% for slot in slots %}
+        <div class="slot-card {{ 'available' if slot.status == 'available' else 'occupied' }}">
+            <h4>{{ slot.slot_number }}</h4>
+            <p>Status: {{ slot.status }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

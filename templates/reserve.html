@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard">
+  <h2>Reserve a Slot</h2>
+  {% if slots %}
+  <ul class="slot-list">
+    {% for slot in slots %}
+      <li class="available">
+        <span>Slot {{ slot.slot_number }} - Available</span>
+        <form method="POST" action="{{ url_for('booking.book_slot', slot_id=slot.id) }}">
+          <button type="submit">Reserve</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Sorry, no available slots at the moment.</p>
+  {% endif %}
+</div>
+{% endblock %}
